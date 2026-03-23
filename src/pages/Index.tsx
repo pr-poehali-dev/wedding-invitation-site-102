@@ -214,12 +214,12 @@ export default function Index() {
                 Торжественная<br />регистрация
               </p>
               <p className="font-serif" style={{ fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
-                [00:00]
+                13:00
               </p>
               <div style={{ fontSize: 28, marginBottom: 14 }}>💍</div>
               <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
-                [Город]<br />
-                [Улица, дом]<br />
+                г. Тюмень<br />
+                ул. Малыгина, 85<br />
                 ЗАГС
               </p>
             </div>
@@ -237,9 +237,9 @@ export default function Index() {
               </p>
               <div style={{ fontSize: 28, marginBottom: 14 }}>🥂</div>
               <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
-                [Город]<br />
-                [Улица, дом]<br />
-                [Название ресторана]
+                г. Тюмень<br />
+                ул. Николая Фёдорова, 9<br />
+                Ресторан «Грин Хаус»
               </p>
             </div>
           </div>
