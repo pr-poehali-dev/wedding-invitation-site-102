@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Icon from "@/components/ui/icon";
 
-const WEDDING_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/2f0b9d84-34e9-4884-a063-0e484c4abda9.jpg";
+const LEAVES_TOP = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/8d5bfe5f-6c62-4f04-a3ec-19e636395e99.jpg";
+const LEAVES_BOTTOM = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/3f87787c-6e95-40c2-9294-2f271c434eb2.jpg";
 
 export default function Index() {
   const [form, setForm] = useState({
@@ -19,355 +19,359 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] font-golos text-[#1C1917]">
+    <div style={{ fontFamily: "'Montserrat', sans-serif", background: "#FAFAF7", color: "#1a2e1a", minHeight: "100vh" }}>
       <style>{`
-        .font-cormorant { font-family: 'Cormorant', serif; }
-        .font-golos { font-family: 'Golos Text', sans-serif; }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(28px); }
+        .font-script { font-family: 'Great Vibes', cursive; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-sans-w { font-family: 'Montserrat', sans-serif; }
+
+        @keyframes fadeDown {
+          from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes lineGrow {
-          from { transform: scaleX(0); }
-          to { transform: scaleX(1); }
+        @keyframes fadeUpW {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+
+        .anim-top { animation: fadeDown 1s ease both; }
+        .anim-w1 { animation: fadeUpW 0.8s ease 0.2s both; }
+        .anim-w2 { animation: fadeUpW 0.8s ease 0.4s both; }
+        .anim-w3 { animation: fadeUpW 0.8s ease 0.6s both; }
+        .anim-w4 { animation: fadeUpW 0.8s ease 0.8s both; }
+        .anim-w5 { animation: fadeUpW 0.8s ease 1.0s both; }
+        .anim-w6 { animation: fadeUpW 0.8s ease 1.2s both; }
+
+        .divider-vline {
+          width: 1px;
+          background: #2d5a2d;
+          opacity: 0.25;
+          align-self: stretch;
+          min-height: 160px;
         }
-        .anim-1 { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) both; }
-        .anim-2 { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.15s both; }
-        .anim-3 { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.3s both; }
-        .anim-4 { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.45s both; }
-        .anim-5 { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.6s both; }
-        .line-anim { animation: lineGrow 1.2s cubic-bezier(.22,1,.36,1) 0.2s both; transform-origin: left; }
-        .photo-anim { animation: fadeIn 1.4s ease 0.1s both; }
-        .divider-geo {
-          display: flex; align-items: center; gap: 16px; margin: 0 auto;
+
+        .w-section-card {
+          background: #fff;
+          border: 1px solid #d4e4d4;
+          padding: 40px 32px;
+          position: relative;
         }
-        .divider-geo::before, .divider-geo::after {
-          content: ''; flex: 1; height: 1px; background: #C9B99A;
+        .w-section-card::before {
+          content: '';
+          position: absolute;
+          top: 6px; left: 6px; right: 6px; bottom: 6px;
+          border: 1px solid #d4e4d4;
+          opacity: 0.5;
+          pointer-events: none;
         }
+
+        .w-input {
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid #a8c5a8;
+          background: transparent;
+          padding: 8px 0;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px;
+          color: #1a2e1a;
+          outline: none;
+          transition: border-color 0.2s;
+          box-sizing: border-box;
+        }
+        .w-input:focus { border-bottom-color: #2d5a2d; }
+        .w-input::placeholder { color: #a8c5a8; }
+
+        .w-radio-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px;
+          color: #1a2e1a;
+          transition: color 0.2s;
+        }
+        .w-radio-label:hover { color: #2d5a2d; }
+        .w-radio-label input { accent-color: #2d5a2d; width: 16px; height: 16px; }
+
+        .w-submit-btn {
+          width: 100%;
+          background: #2d5a2d;
+          color: #fff;
+          border: none;
+          padding: 16px;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+        .w-submit-btn:hover { background: #1a3d1a; }
       `}</style>
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]"
-            style={{ backgroundImage: "radial-gradient(circle at 20% 20%, #8B7355 0%, transparent 50%), radial-gradient(circle at 80% 80%, #C9B99A 0%, transparent 50%)" }} />
+      {/* ===== HERO ===== */}
+      <section style={{ background: "#FAFAF7", position: "relative", overflow: "hidden" }}>
+        {/* Листья сверху */}
+        <div className="anim-top">
+          <img
+            src={LEAVES_TOP}
+            alt=""
+            style={{ width: "100%", display: "block", maxHeight: 340, objectFit: "cover", objectPosition: "center top", mixBlendMode: "multiply" }}
+          />
         </div>
 
-        <div className="absolute top-8 left-8 anim-1">
-          <div className="w-12 h-12 border border-[#C9B99A] rotate-45 opacity-40" />
-        </div>
-        <div className="absolute bottom-12 right-8 anim-1">
-          <div className="w-8 h-8 border border-[#C9B99A] rotate-45 opacity-30" />
-        </div>
-        <div className="absolute top-1/3 right-12 anim-2">
-          <div className="w-px h-24 bg-[#C9B99A] opacity-30" />
-        </div>
-
-        <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
-          <p className="anim-1 font-golos text-[11px] tracking-[0.35em] uppercase text-[#8B7355] mb-8">
-            Приглашение
+        {/* Контент */}
+        <div style={{ textAlign: "center", padding: "16px 24px 48px" }}>
+          <p className="anim-w1 font-serif" style={{ fontSize: "clamp(14px, 4vw, 18px)", color: "#2d5a2d", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: 8, lineHeight: 1.6 }}>
+            Приглашаем Вас на торжество, посвящённое
+          </p>
+          <p className="anim-w1 font-serif" style={{ fontSize: "clamp(14px, 4vw, 18px)", color: "#2d5a2d", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: 36, lineHeight: 1.6 }}>
+            дню нашего бракосочетания
           </p>
 
-          <div className="anim-2 w-full max-w-sm aspect-[3/4] mb-10 overflow-hidden">
-            <div className="relative w-full h-full">
-              <div className="absolute inset-0 border border-[#C9B99A] opacity-50 z-10 pointer-events-none" />
-              <div className="absolute top-3 left-3 right-3 bottom-3 border border-[#C9B99A] opacity-25 z-10 pointer-events-none" />
-              <img
-                src={WEDDING_PHOTO}
-                alt="Свадебное фото"
-                className="photo-anim w-full h-full object-cover"
-                style={{ filter: "sepia(15%) contrast(1.05)" }}
-              />
-            </div>
-          </div>
-
-          <h1 className="anim-3 font-cormorant text-[52px] sm:text-[68px] font-light leading-none tracking-tight text-[#1C1917] mb-3">
-            Мы женимся!
+          <h1 className="anim-w2 font-serif" style={{ fontSize: "clamp(44px, 12vw, 80px)", fontWeight: 600, color: "#1a2e1a", letterSpacing: "0.04em", lineHeight: 1, margin: "0 0 36px" }}>
+            [Число Месяца Год]
           </h1>
 
-          <div className="anim-4 divider-geo w-full max-w-xs my-5">
-            <span className="font-golos text-[10px] tracking-[0.3em] uppercase text-[#8B7355]">◆</span>
+          {/* Разделитель */}
+          <div className="anim-w3" style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 380, margin: "0 auto 44px" }}>
+            <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
+            <span style={{ color: "#b8860b", opacity: 0.6, fontSize: 12 }}>✦</span>
+            <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
           </div>
 
-          <p className="anim-4 font-cormorant text-[28px] sm:text-[36px] italic font-light text-[#1C1917] tracking-wide">
-            [Имя Жениха] &amp; [Имя Невесты]
-          </p>
-
-          <p className="anim-5 font-golos text-[13px] tracking-[0.25em] uppercase text-[#8B7355] mt-5">
-            [Число · Месяц · Год]
-          </p>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 anim-5 flex flex-col items-center gap-2 text-[#C9B99A]">
-          <span className="font-golos text-[10px] tracking-[0.3em] uppercase">листайте</span>
-          <Icon name="ChevronDown" size={16} />
-        </div>
-      </section>
-
-      {/* PROGRAM */}
-      <section className="py-24 px-6 max-w-3xl mx-auto">
-        <div className="mb-16 text-center">
-          <p className="font-golos text-[10px] tracking-[0.35em] uppercase text-[#8B7355] mb-4">02</p>
-          <h2 className="font-cormorant text-[38px] sm:text-[48px] font-light text-[#1C1917]">Программа дня</h2>
-          <div className="mt-5 h-px w-16 bg-[#C9B99A] mx-auto line-anim" />
-        </div>
-
-        <p className="font-golos text-[15px] leading-relaxed text-[#6B5E52] text-center mb-16 max-w-xl mx-auto">
-          Дорогие родные и близкие! Мы будем очень рады видеть вас в этот важный для нас день.
-          Наш праздник пройдёт в два этапа.
-        </p>
-
-        <div className="grid sm:grid-cols-2 gap-8">
-          {/* ЗАГС */}
-          <div className="relative bg-white border border-[#E8DDD0] p-8">
-            <div className="absolute -top-3 left-8 bg-[#FAF8F5] px-3">
-              <span className="font-golos text-[10px] tracking-[0.3em] uppercase text-[#8B7355]">Часть I</span>
+          {/* Программа — две колонки */}
+          <div className="anim-w4" style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", maxWidth: 560, margin: "0 auto 48px" }}>
+            {/* ЗАГС */}
+            <div style={{ flex: 1, textAlign: "center", padding: "0 20px" }}>
+              <p className="font-sans-w" style={{ fontSize: 10, letterSpacing: "0.28em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14, lineHeight: 1.6 }}>
+                Торжественная<br />регистрация
+              </p>
+              <p className="font-serif" style={{ fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
+                [00:00]
+              </p>
+              <div style={{ fontSize: 28, marginBottom: 14 }}>💍</div>
+              <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
+                [Город]<br />
+                [Улица, дом]<br />
+                ЗАГС
+              </p>
             </div>
-            <h3 className="font-cormorant text-[24px] font-light text-[#1C1917] mb-6 mt-2">Официальная регистрация</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Icon name="Clock" size={14} className="text-[#C9B99A] mt-1 shrink-0" />
-                <div>
-                  <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355] mb-0.5">Время</p>
-                  <p className="font-golos text-[15px] text-[#1C1917]">[00:00]</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Icon name="MapPin" size={14} className="text-[#C9B99A] mt-1 shrink-0" />
-                <div>
-                  <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355] mb-0.5">Место</p>
-                  <p className="font-golos text-[15px] text-[#1C1917]">[Название ЗАГСа]</p>
-                  <p className="font-golos text-[13px] text-[#6B5E52] mt-0.5">[Точный адрес]</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 h-32 bg-[#F0EBE3] border border-[#E8DDD0] flex items-center justify-center">
-              <div className="text-center">
-                <Icon name="Map" size={20} className="text-[#C9B99A] mx-auto mb-2" />
-                <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355]">Карта проезда</p>
-              </div>
+
+            {/* Вертикальная линия */}
+            <div className="divider-vline" />
+
+            {/* Ресторан */}
+            <div style={{ flex: 1, textAlign: "center", padding: "0 20px" }}>
+              <p className="font-sans-w" style={{ fontSize: 10, letterSpacing: "0.28em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14, lineHeight: 1.6 }}>
+                Праздничный<br />ужин
+              </p>
+              <p className="font-serif" style={{ fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
+                [00:00]
+              </p>
+              <div style={{ fontSize: 28, marginBottom: 14 }}>🥂</div>
+              <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
+                [Город]<br />
+                [Улица, дом]<br />
+                [Название ресторана]
+              </p>
             </div>
           </div>
 
-          {/* Ресторан */}
-          <div className="relative bg-white border border-[#E8DDD0] p-8">
-            <div className="absolute -top-3 left-8 bg-[#FAF8F5] px-3">
-              <span className="font-golos text-[10px] tracking-[0.3em] uppercase text-[#8B7355]">Часть II</span>
-            </div>
-            <h3 className="font-cormorant text-[24px] font-light text-[#1C1917] mb-6 mt-2">Свадебный ужин</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Icon name="Clock" size={14} className="text-[#C9B99A] mt-1 shrink-0" />
-                <div>
-                  <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355] mb-0.5">Время</p>
-                  <p className="font-golos text-[15px] text-[#1C1917]">[00:00]</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Icon name="MapPin" size={14} className="text-[#C9B99A] mt-1 shrink-0" />
-                <div>
-                  <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355] mb-0.5">Место</p>
-                  <p className="font-golos text-[15px] text-[#1C1917]">[Название ресторана]</p>
-                  <p className="font-golos text-[13px] text-[#6B5E52] mt-0.5">[Точный адрес]</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 h-32 bg-[#F0EBE3] border border-[#E8DDD0] flex items-center justify-center">
-              <div className="text-center">
-                <Icon name="Map" size={20} className="text-[#C9B99A] mx-auto mb-2" />
-                <p className="font-golos text-[11px] tracking-[0.2em] uppercase text-[#8B7355]">Карта проезда</p>
-              </div>
-            </div>
+          {/* Имена каллиграфией */}
+          <div className="anim-w5">
+            <p className="font-script" style={{ fontSize: "clamp(44px, 13vw, 72px)", color: "#2d5a2d", lineHeight: 1.2 }}>
+              [Имя Жениха] и [Имя Невесты]
+            </p>
           </div>
+        </div>
+
+        {/* Листья снизу (перевёрнутые) */}
+        <div>
+          <img
+            src={LEAVES_BOTTOM}
+            alt=""
+            style={{ width: "100%", display: "block", maxHeight: 280, objectFit: "cover", objectPosition: "center", mixBlendMode: "multiply", transform: "scaleY(-1)" }}
+          />
         </div>
       </section>
 
-      {/* DRESS CODE */}
-      <section className="py-24 px-6 bg-[#1C1917]">
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-12 text-center">
-            <p className="font-golos text-[10px] tracking-[0.35em] uppercase text-[#8B7355] mb-4">03</p>
-            <h2 className="font-cormorant text-[38px] sm:text-[48px] font-light text-[#FAF8F5]">Дресс-код</h2>
-            <div className="mt-5 h-px w-16 bg-[#8B7355] mx-auto" />
-          </div>
+      {/* ===== ДРЕСС-КОД ===== */}
+      <section style={{ background: "#f0f5f0", padding: "64px 24px" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
+          <p className="font-sans-w" style={{ fontSize: 10, letterSpacing: "0.35em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 16, opacity: 0.6 }}>
+            03
+          </p>
+          <h2 className="font-serif" style={{ fontSize: "clamp(32px, 8vw, 48px)", fontWeight: 400, color: "#1a2e1a", fontStyle: "italic", marginBottom: 8 }}>
+            Дресс-код
+          </h2>
+          <div style={{ width: 48, height: 1, background: "#2d5a2d", opacity: 0.3, margin: "0 auto 24px" }} />
 
-          <p className="font-golos text-[15px] leading-relaxed text-[#C9B99A] text-center mb-12 max-w-xl mx-auto">
+          <p className="font-sans-w" style={{ fontSize: 14, lineHeight: 1.9, color: "#4a6a4a", marginBottom: 36 }}>
             Нам будет очень приятно, если вы поддержите атмосферу нашего праздника
             и выберете наряды в соответствии с нашим стилем.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-10 justify-center">
-            <div className="text-center">
-              <div className="w-20 h-20 border border-[#8B7355] rotate-45 flex items-center justify-center mx-auto mb-5">
-                <div className="w-8 h-8 bg-[#8B7355] opacity-60" />
-              </div>
-              <p className="font-cormorant text-[22px] italic text-[#FAF8F5] font-light">[Стиль]</p>
-              <p className="font-golos text-[12px] tracking-[0.2em] uppercase text-[#8B7355] mt-1">Например: Коктейль</p>
-            </div>
-
-            <div className="hidden sm:block w-px h-24 bg-[#333] mx-8" />
-
-            <div className="text-center">
-              <p className="font-golos text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-5">Цветовая палитра</p>
-              <div className="flex gap-3 justify-center">
-                {["#F5F0E8", "#E8DDD0", "#C9B99A", "#8B7355", "#5C4A35"].map((color) => (
-                  <div
-                    key={color}
-                    className="w-10 h-10 border border-[#333]"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-              <p className="font-golos text-[11px] text-[#6B5E52] mt-3">Пастельные и тёплые тона</p>
+          <div className="w-section-card" style={{ display: "inline-block", maxWidth: 400, width: "100%", textAlign: "center" }}>
+            <p className="font-script" style={{ fontSize: 38, color: "#2d5a2d", marginBottom: 8 }}>
+              [Стиль]
+            </p>
+            <p className="font-sans-w" style={{ fontSize: 12, color: "#6a8a6a", marginBottom: 24, letterSpacing: "0.05em" }}>
+              например: Коктейль / Пастельные тона
+            </p>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+              {["#F5F5EE", "#D4E4D4", "#A8C5A8", "#2d5a2d", "#1a2e1a"].map((c) => (
+                <div key={c} style={{ width: 36, height: 36, background: c, border: "1px solid #d4e4d4" }} />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* RSVP */}
-      <section className="py-24 px-6 max-w-2xl mx-auto">
-        <div className="mb-12 text-center">
-          <p className="font-golos text-[10px] tracking-[0.35em] uppercase text-[#8B7355] mb-4">04</p>
-          <h2 className="font-cormorant text-[38px] sm:text-[48px] font-light text-[#1C1917]">Анкета гостя</h2>
-          <div className="mt-5 h-px w-16 bg-[#C9B99A] mx-auto" />
-        </div>
-
-        <p className="font-golos text-[15px] leading-relaxed text-[#6B5E52] text-center mb-10">
-          Пожалуйста, ответьте на вопросы до{" "}
-          <span className="text-[#1C1917] font-medium">[Дата]</span>,
-          чтобы мы могли лучше подготовиться к встрече с вами.
-        </p>
-
-        {submitted ? (
-          <div className="text-center py-16 border border-[#E8DDD0] bg-white">
-            <div className="w-12 h-12 border border-[#C9B99A] rotate-45 mx-auto mb-6 flex items-center justify-center">
-              <Icon name="Check" size={16} className="text-[#8B7355] -rotate-45" />
-            </div>
-            <p className="font-cormorant text-[28px] font-light text-[#1C1917]">Спасибо!</p>
-            <p className="font-golos text-[14px] text-[#6B5E52] mt-2">Мы получили ваш ответ.</p>
+      {/* ===== RSVP ===== */}
+      <section style={{ background: "#FAFAF7", padding: "64px 24px" }}>
+        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <p className="font-sans-w" style={{ fontSize: 10, letterSpacing: "0.35em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 16, opacity: 0.6 }}>
+              04
+            </p>
+            <h2 className="font-serif" style={{ fontSize: "clamp(32px, 8vw, 48px)", fontWeight: 400, color: "#1a2e1a", fontStyle: "italic", marginBottom: 8 }}>
+              Анкета гостя
+            </h2>
+            <div style={{ width: 48, height: 1, background: "#2d5a2d", opacity: 0.3, margin: "0 auto 20px" }} />
+            <p className="font-sans-w" style={{ fontSize: 14, color: "#4a6a4a", lineHeight: 1.8 }}>
+              Пожалуйста, ответьте до <strong>[Дата]</strong>, чтобы мы могли лучше подготовиться.
+            </p>
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="bg-white border border-[#E8DDD0] p-8 sm:p-10 space-y-8">
-            <div>
-              <label className="block font-golos text-[11px] tracking-[0.25em] uppercase text-[#8B7355] mb-2">
-                Имя и Фамилия
-              </label>
-              <input
-                type="text"
-                className="w-full border-b border-[#E8DDD0] bg-transparent py-2 font-golos text-[15px] text-[#1C1917] outline-none focus:border-[#8B7355] transition-colors placeholder:text-[#C9B99A]"
-                placeholder="Иван Иванов"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
-            </div>
 
-            <div>
-              <label className="block font-golos text-[11px] tracking-[0.25em] uppercase text-[#8B7355] mb-2">
-                Номер телефона
-              </label>
-              <input
-                type="tel"
-                className="w-full border-b border-[#E8DDD0] bg-transparent py-2 font-golos text-[15px] text-[#1C1917] outline-none focus:border-[#8B7355] transition-colors placeholder:text-[#C9B99A]"
-                placeholder="+7 (999) 000-00-00"
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              />
+          {submitted ? (
+            <div className="w-section-card" style={{ textAlign: "center", padding: "60px 32px" }}>
+              <div style={{ fontSize: 40, marginBottom: 16 }}>🌿</div>
+              <p className="font-serif" style={{ fontSize: 28, fontStyle: "italic", color: "#2d5a2d", marginBottom: 8 }}>
+                Спасибо!
+              </p>
+              <p className="font-sans-w" style={{ fontSize: 14, color: "#4a6a4a" }}>
+                Мы получили ваш ответ и будем ждать вас!
+              </p>
             </div>
-
-            <div>
-              <label className="block font-golos text-[11px] tracking-[0.25em] uppercase text-[#8B7355] mb-4">
-                Сможете ли вы присутствовать?
-              </label>
-              <div className="space-y-3">
-                {[
-                  { value: "yes", label: "Да, с удовольствием приду" },
-                  { value: "no", label: "К сожалению, не смогу быть" },
-                ].map((opt) => (
-                  <label key={opt.value} className="flex items-center gap-3 cursor-pointer group">
-                    <input
-                      type="radio"
-                      name="attending"
-                      value={opt.value}
-                      checked={form.attending === opt.value}
-                      onChange={(e) => setForm({ ...form, attending: e.target.value })}
-                      className="w-4 h-4 accent-[#8B7355]"
-                    />
-                    <span className="font-golos text-[14px] text-[#1C1917] group-hover:text-[#8B7355] transition-colors">
-                      {opt.label}
-                    </span>
-                  </label>
-                ))}
+          ) : (
+            <form onSubmit={handleSubmit} className="w-section-card">
+              <div style={{ marginBottom: 28 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 8 }}>
+                  Имя и Фамилия
+                </label>
+                <input
+                  type="text"
+                  className="w-input"
+                  placeholder="Иван Иванов"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                />
               </div>
-            </div>
 
-            <div>
-              <label className="block font-golos text-[11px] tracking-[0.25em] uppercase text-[#8B7355] mb-4">
-                На каких частях праздника вы будете?
-              </label>
-              <div className="space-y-3">
-                {[
-                  { value: "both", label: "И в ЗАГСе, и в ресторане" },
-                  { value: "registry", label: "Только в ЗАГСе" },
-                  { value: "dinner", label: "Только в ресторане" },
-                ].map((opt) => (
-                  <label key={opt.value} className="flex items-center gap-3 cursor-pointer group">
-                    <input
-                      type="radio"
-                      name="parts"
-                      value={opt.value}
-                      checked={form.parts === opt.value}
-                      onChange={(e) => setForm({ ...form, parts: e.target.value })}
-                      className="w-4 h-4 accent-[#8B7355]"
-                    />
-                    <span className="font-golos text-[14px] text-[#1C1917] group-hover:text-[#8B7355] transition-colors">
-                      {opt.label}
-                    </span>
-                  </label>
-                ))}
+              <div style={{ marginBottom: 28 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 8 }}>
+                  Номер телефона
+                </label>
+                <input
+                  type="tel"
+                  className="w-input"
+                  placeholder="+7 (999) 000-00-00"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                />
               </div>
-            </div>
 
-            <div>
-              <label className="block font-golos text-[11px] tracking-[0.25em] uppercase text-[#8B7355] mb-2">
-                Особые пожелания или аллергии
-              </label>
-              <textarea
-                rows={3}
-                className="w-full border-b border-[#E8DDD0] bg-transparent py-2 font-golos text-[15px] text-[#1C1917] outline-none focus:border-[#8B7355] transition-colors resize-none placeholder:text-[#C9B99A]"
-                placeholder="Укажите аллергии или пожелания..."
-                value={form.wishes}
-                onChange={(e) => setForm({ ...form, wishes: e.target.value })}
-              />
-            </div>
+              <div style={{ marginBottom: 28 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14 }}>
+                  Сможете ли вы присутствовать?
+                </label>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {[
+                    { value: "yes", label: "Да, с удовольствием приду" },
+                    { value: "no", label: "К сожалению, не смогу быть" },
+                  ].map((opt) => (
+                    <label key={opt.value} className="w-radio-label">
+                      <input
+                        type="radio"
+                        name="attending"
+                        value={opt.value}
+                        checked={form.attending === opt.value}
+                        onChange={(e) => setForm({ ...form, attending: e.target.value })}
+                      />
+                      {opt.label}
+                    </label>
+                  ))}
+                </div>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full bg-[#1C1917] text-[#FAF8F5] py-4 font-golos text-[12px] tracking-[0.3em] uppercase hover:bg-[#8B7355] transition-colors duration-300"
-            >
-              Подтвердить присутствие
-            </button>
-          </form>
-        )}
+              <div style={{ marginBottom: 28 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14 }}>
+                  На каких частях праздника вы будете?
+                </label>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {[
+                    { value: "both", label: "И в ЗАГСе, и в ресторане" },
+                    { value: "registry", label: "Только в ЗАГСе" },
+                    { value: "dinner", label: "Только в ресторане" },
+                  ].map((opt) => (
+                    <label key={opt.value} className="w-radio-label">
+                      <input
+                        type="radio"
+                        name="parts"
+                        value={opt.value}
+                        checked={form.parts === opt.value}
+                        onChange={(e) => setForm({ ...form, parts: e.target.value })}
+                      />
+                      {opt.label}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 36 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 8 }}>
+                  Особые пожелания или аллергии
+                </label>
+                <textarea
+                  rows={3}
+                  className="w-input"
+                  style={{ resize: "none" }}
+                  placeholder="Укажите аллергии или пожелания..."
+                  value={form.wishes}
+                  onChange={(e) => setForm({ ...form, wishes: e.target.value })}
+                />
+              </div>
+
+              <button type="submit" className="w-submit-btn">
+                Подтвердить присутствие
+              </button>
+            </form>
+          )}
+        </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-20 px-6 text-center border-t border-[#E8DDD0]">
-        <div className="w-8 h-8 border border-[#C9B99A] rotate-45 mx-auto mb-8 opacity-40" />
-        <p className="font-cormorant text-[32px] sm:text-[40px] italic font-light text-[#1C1917] mb-3">
+      {/* ===== ФИНАЛ ===== */}
+      <section style={{ background: "#f0f5f0", padding: "64px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 320, margin: "0 auto 32px" }}>
+          <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
+          <span style={{ color: "#b8860b", opacity: 0.5, fontSize: 12 }}>✦</span>
+          <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
+        </div>
+
+        <p className="font-serif" style={{ fontSize: "clamp(24px, 6vw, 36px)", fontStyle: "italic", color: "#1a2e1a", marginBottom: 20, lineHeight: 1.5 }}>
           До встречи на нашей свадьбе!
         </p>
-        <p className="font-golos text-[13px] tracking-[0.25em] uppercase text-[#8B7355]">
-          С любовью, [Ваши имена]
+
+        <p className="font-script" style={{ fontSize: "clamp(38px, 10vw, 58px)", color: "#2d5a2d", lineHeight: 1.3, marginBottom: 24 }}>
+          [Имя Жениха] и [Имя Невесты]
         </p>
-        <div className="mt-10 h-px w-12 bg-[#C9B99A] mx-auto" />
-        <p className="font-golos text-[11px] text-[#C9B99A] mt-6 tracking-[0.2em]">
+
+        <p className="font-sans-w" style={{ fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.5 }}>
           [Число · Месяц · Год]
         </p>
-      </footer>
+      </section>
     </div>
   );
 }
