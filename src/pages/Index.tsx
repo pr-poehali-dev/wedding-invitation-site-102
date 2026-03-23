@@ -196,7 +196,7 @@ export default function Index() {
         {/* Контент */}
         <div style={{ textAlign: "center", padding: "48px 24px 48px" }}>
           <h2 className="anim-w1 font-serif" style={{ fontSize: "clamp(44px, 12vw, 80px)", fontWeight: 600, color: "#1a2e1a", letterSpacing: "0.04em", lineHeight: 1, margin: "0 0 36px" }}>
-            [Число Месяца Год]
+            24 Июня 2026
           </h2>
 
           {/* Разделитель */}
@@ -247,7 +247,7 @@ export default function Index() {
           {/* Имена каллиграфией */}
           <div className="anim-w5">
             <p className="font-script" style={{ fontSize: "clamp(44px, 13vw, 72px)", color: "#2d5a2d", lineHeight: 1.2 }}>
-              [Имя Жениха] и [Имя Невесты]
+              Александр и Ангелина
             </p>
           </div>
         </div>
@@ -430,11 +430,11 @@ export default function Index() {
         </p>
 
         <p className="font-script" style={{ fontSize: "clamp(38px, 10vw, 58px)", color: "#2d5a2d", lineHeight: 1.3, marginBottom: 24 }}>
-          [Имя Жениха] и [Имя Невесты]
+          Александр и Ангелина
         </p>
 
         <p className="font-sans-w" style={{ fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.5 }}>
-          [Число · Месяц · Год]
+          24 · Июня · 2026
         </p>
       </section>
     </div>
