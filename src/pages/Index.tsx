@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const LEAVES_TOP = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/8d5bfe5f-6c62-4f04-a3ec-19e636395e99.jpg";
 const LEAVES_BOTTOM = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/3f87787c-6e95-40c2-9294-2f271c434eb2.jpg";
+const COUPLE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/63fb3336-cfa0-4ade-9d9e-4dd5fe1ed92a.jpg";
 
 export default function Index() {
   const [form, setForm] = useState({
@@ -108,31 +109,95 @@ export default function Index() {
           transition: background 0.3s;
         }
         .w-submit-btn:hover { background: #1a3d1a; }
+
+        .couple-photo-wrap {
+          position: relative;
+          width: 100%;
+          max-width: 480px;
+          margin: 0 auto;
+        }
+        .couple-photo-wrap::before {
+          content: '';
+          position: absolute;
+          top: -8px; left: -8px; right: 8px; bottom: 8px;
+          border: 1px solid #a8c5a8;
+          opacity: 0.5;
+          z-index: 0;
+        }
+        .couple-photo-wrap::after {
+          content: '';
+          position: absolute;
+          top: 8px; left: 8px; right: -8px; bottom: -8px;
+          border: 1px solid #a8c5a8;
+          opacity: 0.3;
+          z-index: 0;
+        }
+        .couple-photo-wrap img {
+          position: relative;
+          z-index: 1;
+          display: block;
+          width: 100%;
+        }
+
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(1.04); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .anim-photo { animation: scaleIn 1.2s ease both; }
       `}</style>
 
-      {/* ===== HERO ===== */}
-      <section style={{ background: "#FAFAF7", position: "relative", overflow: "hidden" }}>
+      {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
+      <section style={{ background: "#FAFAF7", padding: "0 0 0", position: "relative", overflow: "hidden" }}>
         {/* Листья сверху */}
         <div className="anim-top">
           <img
             src={LEAVES_TOP}
             alt=""
-            style={{ width: "100%", display: "block", maxHeight: 340, objectFit: "cover", objectPosition: "center top", mixBlendMode: "multiply" }}
+            style={{ width: "100%", display: "block", maxHeight: 260, objectFit: "cover", objectPosition: "center top", mixBlendMode: "multiply" }}
           />
         </div>
 
-        {/* Контент */}
-        <div style={{ textAlign: "center", padding: "16px 24px 48px" }}>
-          <p className="anim-w1 font-serif" style={{ fontSize: "clamp(14px, 4vw, 18px)", color: "#2d5a2d", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: 8, lineHeight: 1.6 }}>
-            Приглашаем Вас на торжество, посвящённое
-          </p>
-          <p className="anim-w1 font-serif" style={{ fontSize: "clamp(14px, 4vw, 18px)", color: "#2d5a2d", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: 36, lineHeight: 1.6 }}>
-            дню нашего бракосочетания
+        {/* Фото пары */}
+        <div style={{ padding: "32px 32px 0", display: "flex", justifyContent: "center" }}>
+          <div className="couple-photo-wrap anim-photo" style={{ maxWidth: 460 }}>
+            <img
+              src={COUPLE_PHOTO}
+              alt="Александр и Ангелина"
+              style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }}
+            />
+          </div>
+        </div>
+
+        {/* Имена и приветствие */}
+        <div style={{ textAlign: "center", padding: "40px 24px 48px" }}>
+          <p className="anim-w1 font-sans-w" style={{ fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.7, marginBottom: 20 }}>
+            ✦ &nbsp; Свадебное приглашение &nbsp; ✦
           </p>
 
-          <h1 className="anim-w2 font-serif" style={{ fontSize: "clamp(44px, 12vw, 80px)", fontWeight: 600, color: "#1a2e1a", letterSpacing: "0.04em", lineHeight: 1, margin: "0 0 36px" }}>
-            [Число Месяца Год]
+          <h1 className="anim-w2 font-script" style={{ fontSize: "clamp(52px, 15vw, 88px)", color: "#1a2e1a", lineHeight: 1.15, marginBottom: 24 }}>
+            Александр<br />& Ангелина
           </h1>
+
+          <div className="anim-w3" style={{ display: "flex", alignItems: "center", gap: 14, maxWidth: 340, margin: "0 auto 28px" }}>
+            <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
+            <span style={{ color: "#b8860b", opacity: 0.6, fontSize: 11 }}>✦</span>
+            <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
+          </div>
+
+          <p className="anim-w4 font-serif" style={{ fontSize: "clamp(18px, 5vw, 26px)", color: "#2d5a2d", fontStyle: "italic", lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
+            С радостью приглашаем вас разделить с нами<br />
+            самый счастливый день нашей жизни
+          </p>
+        </div>
+      </section>
+
+      {/* ===== HERO — ДАТА И ПРОГРАММА ===== */}
+      <section style={{ background: "#FAFAF7", position: "relative", overflow: "hidden" }}>
+        {/* Контент */}
+        <div style={{ textAlign: "center", padding: "48px 24px 48px" }}>
+          <h2 className="anim-w1 font-serif" style={{ fontSize: "clamp(44px, 12vw, 80px)", fontWeight: 600, color: "#1a2e1a", letterSpacing: "0.04em", lineHeight: 1, margin: "0 0 36px" }}>
+            [Число Месяца Год]
+          </h2>
 
           {/* Разделитель */}
           <div className="anim-w3" style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 380, margin: "0 auto 44px" }}>
