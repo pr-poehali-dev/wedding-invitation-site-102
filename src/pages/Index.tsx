@@ -352,26 +352,27 @@ export default function Index() {
             <h2 className="font-serif" style={{ fontSize: "clamp(32px, 8vw, 48px)", fontWeight: 400, color: "#1a2e1a", fontStyle: "italic", marginBottom: 8 }}>
               Дресс-код
             </h2>
-            <div style={{ width: 48, height: 1, background: "#2d5a2d", opacity: 0.3, margin: "0 auto 24px" }} />
+            <div style={{ width: 48, height: 1, background: "#2d5a2d", opacity: 0.3, margin: "0 auto 40px" }} />
 
-            <p className="font-sans-w" style={{ fontSize: 14, lineHeight: 1.9, color: "#4a6a4a", marginBottom: 36 }}>
-              Нам будет очень приятно, если вы поддержите атмосферу нашего праздника
-              и выберете наряды в соответствии с нашим стилем.
-            </p>
-
-            <div className="w-section-card" style={{ display: "inline-block", maxWidth: 400, width: "100%", textAlign: "center" }}>
-              <p className="font-script" style={{ fontSize: 38, color: "#2d5a2d", marginBottom: 8 }}>
-                Пастельные тона
+            <div style={{ maxWidth: 480, margin: "0 auto 40px", padding: "32px 36px", background: "rgba(255,255,255,0.6)", border: "1px solid rgba(180,210,180,0.4)", backdropFilter: "blur(4px)", position: "relative" }}>
+              <div style={{ position: "absolute", top: 12, left: 12, right: 12, bottom: 12, border: "1px solid rgba(180,210,180,0.25)", pointerEvents: "none" }} />
+              <p className="font-serif" style={{ fontSize: "clamp(17px, 4.5vw, 22px)", color: "#2d5a2d", lineHeight: 1.85, fontStyle: "italic", margin: 0 }}>
+                Для нас самое главное&nbsp;—&nbsp;ваше присутствие!
               </p>
-              <p className="font-sans-w" style={{ fontSize: 12, color: "#6a8a6a", marginBottom: 24, letterSpacing: "0.05em" }}>
-                Коктейльный / нарядный стиль
+              <div style={{ width: 32, height: 1, background: "#b8860b", opacity: 0.4, margin: "18px auto" }} />
+              <p className="font-sans-w" style={{ fontSize: 13, lineHeight: 1.9, color: "#4a6a4a", margin: 0 }}>
+                Но мы будем очень благодарны, если поддержите<br />цветовую гамму нашей свадьбы 🥰
               </p>
-              <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
-                {["#EFE9DF", "#F2C5C5", "#D9C5E8", "#C5D5ED", "#BFD0A8", "#F0F0C0"].map((c) => (
-                  <div key={c} style={{ width: 36, height: 36, borderRadius: "50%", background: c, border: "1px solid rgba(0,0,0,0.06)" }} />
-                ))}
-              </div>
             </div>
+
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 16 }}>
+              {["#EFE9DF", "#F2C5C5", "#D9C5E8", "#C5D5ED", "#BFD0A8", "#F0F0C0"].map((c) => (
+                <div key={c} style={{ width: 38, height: 38, borderRadius: "50%", background: c, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }} />
+              ))}
+            </div>
+            <p className="font-sans-w" style={{ fontSize: 11, color: "#8aaa8a", letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center" }}>
+              Пастельные тона · Коктейльный стиль
+            </p>
           </div>
         </section>
 
