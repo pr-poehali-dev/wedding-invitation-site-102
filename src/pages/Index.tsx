@@ -3,6 +3,8 @@ import { useState } from "react";
 const LEAVES_TOP = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/8d5bfe5f-6c62-4f04-a3ec-19e636395e99.jpg";
 const LEAVES_BOTTOM = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/3f87787c-6e95-40c2-9294-2f271c434eb2.jpg";
 const COUPLE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/files/63fb3336-cfa0-4ade-9d9e-4dd5fe1ed92a.jpg";
+const BRIDE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/a6347634-fe14-4902-9837-14a7f874fbcc.png";
+const GROOM_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/10aa14eb-a447-45f4-8a35-145949d86920.png";
 
 export default function Index() {
   const [form, setForm] = useState({
@@ -10,6 +12,7 @@ export default function Index() {
     phone: "",
     attending: "",
     parts: "",
+    alcohol: "",
     wishes: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -146,6 +149,29 @@ export default function Index() {
         .anim-photo { animation: scaleIn 1.2s ease both; }
       `}</style>
 
+      {/* ===== ФОТО ЖЕНИХА И НЕВЕСТЫ ===== */}
+      <section style={{ background: "#FAFAF7", padding: "48px 24px 32px", position: "relative", overflow: "hidden" }}>
+        <p className="anim-w1 font-sans-w" style={{ textAlign: "center", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.7, marginBottom: 32 }}>
+          ✦ &nbsp; Свадебное приглашение &nbsp; ✦
+        </p>
+        <div className="anim-photo" style={{ display: "flex", gap: 16, justifyContent: "center", maxWidth: 600, margin: "0 auto" }}>
+          <div className="couple-photo-wrap" style={{ flex: 1, maxWidth: 280 }}>
+            <img
+              src={GROOM_PHOTO}
+              alt="Александр"
+              style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
+            />
+          </div>
+          <div className="couple-photo-wrap" style={{ flex: 1, maxWidth: 280 }}>
+            <img
+              src={BRIDE_PHOTO}
+              alt="Ангелина"
+              style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
       <section style={{ background: "#FAFAF7", padding: "0 0 0", position: "relative", overflow: "hidden" }}>
         {/* Листья сверху */}
@@ -170,10 +196,6 @@ export default function Index() {
 
         {/* Имена и приветствие */}
         <div style={{ textAlign: "center", padding: "40px 24px 48px" }}>
-          <p className="anim-w1 font-sans-w" style={{ fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.7, marginBottom: 20 }}>
-            ✦ &nbsp; Свадебное приглашение &nbsp; ✦
-          </p>
-
           <h1 className="anim-w2 font-script" style={{ fontSize: "clamp(52px, 15vw, 88px)", color: "#1a2e1a", lineHeight: 1.15, marginBottom: 24 }}>
             Александр<br />& Ангелина
           </h1>
@@ -184,9 +206,10 @@ export default function Index() {
             <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
           </div>
 
-          <p className="anim-w4 font-serif" style={{ fontSize: "clamp(18px, 5vw, 26px)", color: "#2d5a2d", fontStyle: "italic", lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
-            С радостью приглашаем вас разделить с нами<br />
-            самый счастливый день нашей жизни
+          <p className="anim-w4 font-serif" style={{ fontSize: "clamp(16px, 4.5vw, 22px)", color: "#2d5a2d", fontStyle: "italic", lineHeight: 1.9, maxWidth: 520, margin: "0 auto" }}>
+            Привет!<br />
+            Мы приглашаем тебя на нашу свадьбу и будем очень рады видеть тебя в этот день.<br /><br />
+            Можешь приехать в ЗАГС, поддержать и быть с нами с самого начала, а можешь приехать сразу на банкет. Мы будем очень рады тебе ☺️
           </p>
         </div>
       </section>
@@ -214,7 +237,7 @@ export default function Index() {
                 Торжественная<br />регистрация
               </p>
               <p className="font-serif" style={{ fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
-                13:00
+                15:00
               </p>
               <div style={{ fontSize: 28, marginBottom: 14 }}>💍</div>
               <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
@@ -232,8 +255,8 @@ export default function Index() {
               <p className="font-sans-w" style={{ fontSize: 10, letterSpacing: "0.28em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14, lineHeight: 1.6 }}>
                 Праздничный<br />ужин
               </p>
-              <p className="font-serif" style={{ fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
-                [00:00]
+              <p className="font-serif" style={{ fontSize: "clamp(28px, 7vw, 40px)", fontWeight: 600, color: "#1a2e1a", lineHeight: 1, marginBottom: 14 }}>
+                18:30–00:30
               </p>
               <div style={{ fontSize: 28, marginBottom: 14 }}>🥂</div>
               <p className="font-sans-w" style={{ fontSize: 12, color: "#4a6a4a", lineHeight: 1.8 }}>
@@ -388,6 +411,31 @@ export default function Index() {
                         value={opt.value}
                         checked={form.parts === opt.value}
                         onChange={(e) => setForm({ ...form, parts: e.target.value })}
+                      />
+                      {opt.label}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 28 }}>
+                <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14 }}>
+                  Пожелания по алкоголю
+                </label>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {[
+                    { value: "wine", label: "Вино (красное / белое)" },
+                    { value: "champagne", label: "Шампанское / игристое" },
+                    { value: "strong", label: "Крепкий алкоголь (водка, виски и т.д.)" },
+                    { value: "none", label: "Не употребляю алкоголь" },
+                  ].map((opt) => (
+                    <label key={opt.value} className="w-radio-label">
+                      <input
+                        type="radio"
+                        name="alcohol"
+                        value={opt.value}
+                        checked={form.alcohol === opt.value}
+                        onChange={(e) => setForm({ ...form, alcohol: e.target.value })}
                       />
                       {opt.label}
                     </label>
