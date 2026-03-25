@@ -28,7 +28,7 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "'Montserrat', sans-serif", color: "#1a2e1a", minHeight: "100vh", background: "#f4f7f2" }}>
       <style>{`
-        .font-script { font-family: 'Pinyon Script', cursive; }
+        .font-script { font-family: 'Marck Script', cursive; }
         .font-serif { font-family: 'Cormorant Garamond', serif; }
         .font-sans-w { font-family: 'Montserrat', sans-serif; }
 
