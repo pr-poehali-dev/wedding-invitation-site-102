@@ -3,6 +3,7 @@ import { useState } from "react";
 const COUPLE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/c3869897-c17f-4c2d-ac16-688f958fffd9.png";
 const BRIDE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/a6347634-fe14-4902-9837-14a7f874fbcc.png";
 const GROOM_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/10aa14eb-a447-45f4-8a35-145949d86920.png";
+const INVITE_BG = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/abfac27f-6130-4649-baee-e9a93aaee9f5.jpeg";
 
 export default function Index() {
   const [form, setForm] = useState({
@@ -21,7 +22,7 @@ export default function Index() {
   };
 
   return (
-    <div style={{ fontFamily: "'Montserrat', sans-serif", color: "#1a2e1a", minHeight: "100vh", background: "#f7f9f5" }}>
+    <div style={{ fontFamily: "'Montserrat', sans-serif", color: "#1a2e1a", minHeight: "100vh", background: "#f4f7f2" }}>
       <style>{`
         .font-script { font-family: 'Great Vibes', cursive; }
         .font-serif { font-family: 'Cormorant Garamond', serif; }
@@ -44,21 +45,9 @@ export default function Index() {
         .anim-w5 { animation: fadeUpW 0.8s ease 1.0s both; }
         .anim-w6 { animation: fadeUpW 0.8s ease 1.2s both; }
 
-        /* Фоновый паттерн с листьями SVG по всему сайту */
         .leaves-bg {
           position: relative;
         }
-        .leaves-bg::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          pointer-events: none;
-          z-index: 0;
-          background-image: 
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cellipse cx='60' cy='40' rx='28' ry='14' fill='%23b8d4b8' opacity='0.18' transform='rotate(-30 60 40)'/%3E%3Cellipse cx='80' cy='60' rx='22' ry='10' fill='%2390b890' opacity='0.13' transform='rotate(-20 80 60)'/%3E%3Cellipse cx='340' cy='30' rx='26' ry='12' fill='%23b8d4b8' opacity='0.15' transform='rotate(25 340 30)'/%3E%3Cellipse cx='360' cy='55' rx='20' ry='9' fill='%2390b890' opacity='0.12' transform='rotate(15 360 55)'/%3E%3Cellipse cx='20' cy='200' rx='24' ry='11' fill='%23b8d4b8' opacity='0.12' transform='rotate(-40 20 200)'/%3E%3Cellipse cx='380' cy='180' rx='22' ry='10' fill='%23b8d4b8' opacity='0.11' transform='rotate(35 380 180)'/%3E%3Cellipse cx='50' cy='370' rx='26' ry='12' fill='%2390b890' opacity='0.14' transform='rotate(-25 50 370)'/%3E%3Cellipse cx='350' cy='360' rx='24' ry='11' fill='%23b8d4b8' opacity='0.13' transform='rotate(20 350 360)'/%3E%3Cellipse cx='200' cy='10' rx='18' ry='8' fill='%23b8d4b8' opacity='0.09' transform='rotate(10 200 10)'/%3E%3Cellipse cx='200' cy='390' rx='20' ry='9' fill='%2390b890' opacity='0.1' transform='rotate(-10 200 390)'/%3E%3C/svg%3E");
-          background-size: 400px 400px;
-        }
-
         .leaves-bg > * { position: relative; z-index: 1; }
 
         .w-section-card {
@@ -184,7 +173,25 @@ export default function Index() {
         .corner-leaves > * { position: relative; z-index: 1; }
       `}</style>
 
-      <div className="leaves-bg">
+      {/* ===== ФИКСИРОВАННЫЕ УГЛОВЫЕ ЛИСТЬЯ ===== */}
+      {/* Верхний левый */}
+      <div style={{ position: "fixed", top: 0, left: 0, width: "clamp(180px, 35vw, 340px)", height: "clamp(180px, 35vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={INVITE_BG} alt="" style={{ position: "absolute", top: 0, left: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "top left", opacity: 0.75, mixBlendMode: "multiply" }} />
+      </div>
+      {/* Верхний правый */}
+      <div style={{ position: "fixed", top: 0, right: 0, width: "clamp(180px, 35vw, 340px)", height: "clamp(180px, 35vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={INVITE_BG} alt="" style={{ position: "absolute", top: 0, right: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "top right", opacity: 0.75, mixBlendMode: "multiply", transform: "scaleX(-1)" }} />
+      </div>
+      {/* Нижний левый */}
+      <div style={{ position: "fixed", bottom: 0, left: 0, width: "clamp(160px, 30vw, 300px)", height: "clamp(160px, 30vw, 300px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={INVITE_BG} alt="" style={{ position: "absolute", bottom: 0, left: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "bottom left", opacity: 0.7, mixBlendMode: "multiply", transform: "scaleY(-1)", transformOrigin: "bottom" }} />
+      </div>
+      {/* Нижний правый */}
+      <div style={{ position: "fixed", bottom: 0, right: 0, width: "clamp(160px, 30vw, 300px)", height: "clamp(160px, 30vw, 300px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={INVITE_BG} alt="" style={{ position: "absolute", bottom: 0, right: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "bottom right", opacity: 0.7, mixBlendMode: "multiply", transform: "scale(-1, -1)", transformOrigin: "bottom right" }} />
+      </div>
+
+      <div className="leaves-bg" style={{ position: "relative", zIndex: 20 }}>
 
         {/* ===== ФОТО ЖЕНИХА И НЕВЕСТЫ ===== */}
         <section style={{ padding: "48px 24px 32px" }}>
@@ -246,43 +253,8 @@ export default function Index() {
         <section style={{ background: "rgba(255,255,255,0.7)", position: "relative", overflow: "hidden", backdropFilter: "blur(4px)" }}>
           {/* Листья по углам сверху */}
           <div style={{ position: "relative" }}>
-            {/* Левый верхний угол */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 220, height: 220, pointerEvents: "none", zIndex: 2 }}>
-              <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-                <ellipse cx="30" cy="15" rx="55" ry="22" fill="#8fbd78" opacity="0.35" transform="rotate(-40 30 15)"/>
-                <ellipse cx="60" cy="40" rx="48" ry="18" fill="#a8d090" opacity="0.28" transform="rotate(-25 60 40)"/>
-                <ellipse cx="15" cy="55" rx="42" ry="16" fill="#6a9e5a" opacity="0.25" transform="rotate(-55 15 55)"/>
-                <ellipse cx="90" cy="20" rx="36" ry="14" fill="#c0dca8" opacity="0.22" transform="rotate(-15 90 20)"/>
-                <ellipse cx="40" cy="80" rx="32" ry="12" fill="#8fbd78" opacity="0.2" transform="rotate(-45 40 80)"/>
-                <ellipse cx="120" cy="50" rx="28" ry="11" fill="#a8d090" opacity="0.18" transform="rotate(-10 120 50)"/>
-                <circle cx="50" cy="18" r="4" fill="white" opacity="0.6"/>
-                <circle cx="85" cy="35" r="3" fill="white" opacity="0.5"/>
-                <circle cx="25" cy="45" r="3.5" fill="white" opacity="0.55"/>
-                <circle cx="110" cy="25" r="2.5" fill="white" opacity="0.45"/>
-                <circle cx="65" cy="65" r="3" fill="white" opacity="0.4"/>
-                <ellipse cx="70" cy="100" rx="22" ry="9" fill="#8fbd78" opacity="0.15" transform="rotate(-30 70 100)"/>
-              </svg>
-            </div>
-            {/* Правый верхний угол */}
-            <div style={{ position: "absolute", top: 0, right: 0, width: 220, height: 220, pointerEvents: "none", zIndex: 2 }}>
-              <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", transform: "scaleX(-1)" }}>
-                <ellipse cx="30" cy="15" rx="55" ry="22" fill="#8fbd78" opacity="0.35" transform="rotate(-40 30 15)"/>
-                <ellipse cx="60" cy="40" rx="48" ry="18" fill="#a8d090" opacity="0.28" transform="rotate(-25 60 40)"/>
-                <ellipse cx="15" cy="55" rx="42" ry="16" fill="#6a9e5a" opacity="0.25" transform="rotate(-55 15 55)"/>
-                <ellipse cx="90" cy="20" rx="36" ry="14" fill="#c0dca8" opacity="0.22" transform="rotate(-15 90 20)"/>
-                <ellipse cx="40" cy="80" rx="32" ry="12" fill="#8fbd78" opacity="0.2" transform="rotate(-45 40 80)"/>
-                <ellipse cx="120" cy="50" rx="28" ry="11" fill="#a8d090" opacity="0.18" transform="rotate(-10 120 50)"/>
-                <circle cx="50" cy="18" r="4" fill="white" opacity="0.6"/>
-                <circle cx="85" cy="35" r="3" fill="white" opacity="0.5"/>
-                <circle cx="25" cy="45" r="3.5" fill="white" opacity="0.55"/>
-                <circle cx="110" cy="25" r="2.5" fill="white" opacity="0.45"/>
-                <circle cx="65" cy="65" r="3" fill="white" opacity="0.4"/>
-                <ellipse cx="70" cy="100" rx="22" ry="9" fill="#8fbd78" opacity="0.15" transform="rotate(-30 70 100)"/>
-              </svg>
-            </div>
-
             {/* Контент */}
-            <div style={{ textAlign: "center", padding: "80px 32px 24px", position: "relative", zIndex: 3 }}>
+            <div style={{ textAlign: "center", padding: "48px 32px 24px", position: "relative", zIndex: 3 }}>
               <p className="anim-w1 font-sans-w" style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 12, lineHeight: 1.7 }}>
                 Приглашаем Вас на торжество,<br />посвящённое дню нашего бракосочетания
               </p>
@@ -337,34 +309,8 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Листья по углам снизу */}
-            <div style={{ position: "relative", height: 160 }}>
-              {/* Левый нижний */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, width: 220, height: 180, pointerEvents: "none" }}>
-                <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", transform: "scaleY(-1)" }}>
-                  <ellipse cx="30" cy="15" rx="55" ry="22" fill="#8fbd78" opacity="0.32" transform="rotate(-40 30 15)"/>
-                  <ellipse cx="60" cy="40" rx="48" ry="18" fill="#a8d090" opacity="0.25" transform="rotate(-25 60 40)"/>
-                  <ellipse cx="15" cy="55" rx="42" ry="16" fill="#6a9e5a" opacity="0.22" transform="rotate(-55 15 55)"/>
-                  <ellipse cx="90" cy="20" rx="36" ry="14" fill="#c0dca8" opacity="0.2" transform="rotate(-15 90 20)"/>
-                  <ellipse cx="40" cy="80" rx="30" ry="12" fill="#8fbd78" opacity="0.18" transform="rotate(-45 40 80)"/>
-                  <circle cx="50" cy="18" r="4" fill="white" opacity="0.55"/>
-                  <circle cx="85" cy="35" r="3" fill="white" opacity="0.45"/>
-                  <circle cx="25" cy="45" r="3.5" fill="white" opacity="0.5"/>
-                </svg>
-              </div>
-              {/* Правый нижний */}
-              <div style={{ position: "absolute", bottom: 0, right: 0, width: 220, height: 180, pointerEvents: "none" }}>
-                <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", transform: "scaleX(-1) scaleY(-1)" }}>
-                  <ellipse cx="30" cy="15" rx="55" ry="22" fill="#8fbd78" opacity="0.32" transform="rotate(-40 30 15)"/>
-                  <ellipse cx="60" cy="40" rx="48" ry="18" fill="#a8d090" opacity="0.25" transform="rotate(-25 60 40)"/>
-                  <ellipse cx="15" cy="55" rx="42" ry="16" fill="#6a9e5a" opacity="0.22" transform="rotate(-55 15 55)"/>
-                  <ellipse cx="90" cy="20" rx="36" ry="14" fill="#c0dca8" opacity="0.2" transform="rotate(-15 90 20)"/>
-                  <ellipse cx="40" cy="80" rx="30" ry="12" fill="#8fbd78" opacity="0.18" transform="rotate(-45 40 80)"/>
-                  <circle cx="50" cy="18" r="4" fill="white" opacity="0.55"/>
-                  <circle cx="85" cy="35" r="3" fill="white" opacity="0.45"/>
-                  <circle cx="25" cy="45" r="3.5" fill="white" opacity="0.5"/>
-                </svg>
-              </div>
+            {/* Отступ снизу */}
+            <div style={{ height: 48 }}>
             </div>
           </div>
         </section>
@@ -551,26 +497,6 @@ export default function Index() {
 
         {/* ===== ФИНАЛ ===== */}
         <section style={{ padding: "64px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-          {/* Листья в финальной секции */}
-          <div style={{ position: "absolute", bottom: 0, left: 0, width: 160, height: 160, pointerEvents: "none", opacity: 0.6 }}>
-            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-              <ellipse cx="20" cy="140" rx="50" ry="20" fill="#8fbd78" opacity="0.3" transform="rotate(30 20 140)"/>
-              <ellipse cx="50" cy="120" rx="42" ry="16" fill="#a8d090" opacity="0.25" transform="rotate(15 50 120)"/>
-              <ellipse cx="10" cy="100" rx="35" ry="13" fill="#6a9e5a" opacity="0.22" transform="rotate(45 10 100)"/>
-              <circle cx="35" cy="145" r="3" fill="white" opacity="0.5"/>
-              <circle cx="70" cy="125" r="2.5" fill="white" opacity="0.45"/>
-            </svg>
-          </div>
-          <div style={{ position: "absolute", bottom: 0, right: 0, width: 160, height: 160, pointerEvents: "none", opacity: 0.6 }}>
-            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", transform: "scaleX(-1)" }}>
-              <ellipse cx="20" cy="140" rx="50" ry="20" fill="#8fbd78" opacity="0.3" transform="rotate(30 20 140)"/>
-              <ellipse cx="50" cy="120" rx="42" ry="16" fill="#a8d090" opacity="0.25" transform="rotate(15 50 120)"/>
-              <ellipse cx="10" cy="100" rx="35" ry="13" fill="#6a9e5a" opacity="0.22" transform="rotate(45 10 100)"/>
-              <circle cx="35" cy="145" r="3" fill="white" opacity="0.5"/>
-              <circle cx="70" cy="125" r="2.5" fill="white" opacity="0.45"/>
-            </svg>
-          </div>
-
           <div style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 320, margin: "0 auto 32px" }}>
             <div style={{ flex: 1, height: 1, background: "#2d5a2d", opacity: 0.2 }} />
             <span style={{ color: "#b8860b", opacity: 0.5, fontSize: 12 }}>✦</span>
