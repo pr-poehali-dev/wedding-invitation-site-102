@@ -177,22 +177,46 @@ export default function Index() {
         .corner-leaves > * { position: relative; z-index: 1; }
       `}</style>
 
-      {/* ===== ФОНОВЫЕ ДЕКОРАЦИИ ===== */}
-      {/* Эвкалипт — левый бок */}
-      <div style={{ position: "fixed", top: "10%", left: 0, width: "clamp(140px, 28vw, 280px)", height: "80vh", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={IMG_EUCALYPTUS} alt="" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "left center", opacity: 0.55, mixBlendMode: "multiply" }} />
+      {/* ===== ФОНОВЫЕ ДЕКОРАЦИИ С ПЛАВНЫМИ ПЕРЕХОДАМИ ===== */}
+      {/* Верхний левый — белые цветы с листьями */}
+      <div style={{
+        position: "fixed", top: 0, left: 0,
+        width: "clamp(200px, 42vw, 420px)", height: "clamp(200px, 42vw, 420px)",
+        pointerEvents: "none", zIndex: 10,
+        WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 0% 0%, black 30%, transparent 75%)",
+        maskImage: "radial-gradient(ellipse 80% 80% at 0% 0%, black 30%, transparent 75%)",
+      }}>
+        <img src={IMG_WHITE_FLOWERS} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", opacity: 0.72, mixBlendMode: "multiply" }} />
       </div>
-      {/* Белые цветы с листьями — верхний правый */}
-      <div style={{ position: "fixed", top: 0, right: 0, width: "clamp(180px, 38vw, 360px)", height: "clamp(220px, 45vw, 420px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={IMG_WHITE_FLOWERS} alt="" style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right", opacity: 0.6, mixBlendMode: "multiply" }} />
+      {/* Верхний правый — эвкалипт */}
+      <div style={{
+        position: "fixed", top: 0, right: 0,
+        width: "clamp(180px, 38vw, 380px)", height: "clamp(220px, 50vw, 500px)",
+        pointerEvents: "none", zIndex: 10,
+        WebkitMaskImage: "radial-gradient(ellipse 75% 85% at 100% 0%, black 30%, transparent 75%)",
+        maskImage: "radial-gradient(ellipse 75% 85% at 100% 0%, black 30%, transparent 75%)",
+      }}>
+        <img src={IMG_EUCALYPTUS} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right", opacity: 0.65, mixBlendMode: "multiply", transform: "scaleX(-1)" }} />
       </div>
-      {/* Мрамор с цветами — нижний левый */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, width: "clamp(160px, 32vw, 320px)", height: "clamp(200px, 40vw, 380px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={IMG_MARBLE} alt="" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom left", opacity: 0.55, mixBlendMode: "multiply" }} />
+      {/* Нижний левый — мрамор с цветами */}
+      <div style={{
+        position: "fixed", bottom: 0, left: 0,
+        width: "clamp(200px, 44vw, 440px)", height: "clamp(200px, 44vw, 440px)",
+        pointerEvents: "none", zIndex: 10,
+        WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 0% 100%, black 30%, transparent 75%)",
+        maskImage: "radial-gradient(ellipse 80% 80% at 0% 100%, black 30%, transparent 75%)",
+      }}>
+        <img src={IMG_MARBLE} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom left", opacity: 0.68, mixBlendMode: "multiply" }} />
       </div>
-      {/* Мятные цветы — нижний правый */}
-      <div style={{ position: "fixed", bottom: 0, right: 0, width: "clamp(160px, 34vw, 320px)", height: "clamp(180px, 36vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={IMG_MINT_FLOWERS} alt="" style={{ position: "absolute", bottom: 0, right: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom right", opacity: 0.5, mixBlendMode: "multiply" }} />
+      {/* Нижний правый — мятные цветы */}
+      <div style={{
+        position: "fixed", bottom: 0, right: 0,
+        width: "clamp(200px, 44vw, 440px)", height: "clamp(200px, 44vw, 440px)",
+        pointerEvents: "none", zIndex: 10,
+        WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 100% 100%, black 30%, transparent 75%)",
+        maskImage: "radial-gradient(ellipse 80% 80% at 100% 100%, black 30%, transparent 75%)",
+      }}>
+        <img src={IMG_MINT_FLOWERS} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom right", opacity: 0.62, mixBlendMode: "multiply" }} />
       </div>
 
       <div className="leaves-bg" style={{ position: "relative", zIndex: 20 }}>
@@ -222,34 +246,13 @@ export default function Index() {
 
         {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
         <section style={{ padding: "0 0 0" }}>
-          {/* Фото пары с геометрической рамкой */}
+          {/* Фото пары */}
           <div style={{ padding: "24px 32px 0", display: "flex", justifyContent: "center" }}>
-            <div className="anim-photo" style={{ position: "relative", maxWidth: 460, width: "100%" }}>
-              {/* Геометрическая рамка поверх фото */}
-              <img
-                src={IMG_GEOM}
-                alt=""
-                style={{
-                  position: "absolute", inset: "-12%",
-                  width: "124%", height: "124%",
-                  objectFit: "contain",
-                  pointerEvents: "none", zIndex: 3,
-                  mixBlendMode: "multiply",
-                  opacity: 0.9,
-                }}
-              />
+            <div className="couple-photo-wrap anim-photo" style={{ maxWidth: 460 }}>
               <img
                 src={COUPLE_PHOTO}
                 alt="Александр и Ангелина"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "3/4",
-                  objectFit: "cover",
-                  position: "relative",
-                  zIndex: 2,
-                  borderRadius: 2,
-                }}
+                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }}
               />
             </div>
           </div>
