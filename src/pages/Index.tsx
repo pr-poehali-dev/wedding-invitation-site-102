@@ -3,7 +3,11 @@ import { useState } from "react";
 const COUPLE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/c3869897-c17f-4c2d-ac16-688f958fffd9.png";
 const BRIDE_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/a6347634-fe14-4902-9837-14a7f874fbcc.png";
 const GROOM_PHOTO = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/10aa14eb-a447-45f4-8a35-145949d86920.png";
-const INVITE_BG = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/abfac27f-6130-4649-baee-e9a93aaee9f5.jpeg";
+const IMG_EUCALYPTUS = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/8674e4a8-62e4-43b5-ab3f-8d2b2f2a8519.jpeg";
+const IMG_GEOM = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/2bb4a89e-dd25-447e-9136-c2e0fa958cf9.jpeg";
+const IMG_MARBLE = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/5dade6b8-1ac8-47b8-833d-0bd566428aaf.jpeg";
+const IMG_WHITE_FLOWERS = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/d3e0f154-1662-45ce-84da-4258474c52f0.jpeg";
+const IMG_MINT_FLOWERS = "https://cdn.poehali.dev/projects/e3bc3631-22b9-4e63-a381-a0ddce546fff/bucket/14afae9e-5c87-45f0-a192-8705e53c4cd2.jpeg";
 
 export default function Index() {
   const [form, setForm] = useState({
@@ -173,22 +177,22 @@ export default function Index() {
         .corner-leaves > * { position: relative; z-index: 1; }
       `}</style>
 
-      {/* ===== ФИКСИРОВАННЫЕ УГЛОВЫЕ ЛИСТЬЯ ===== */}
-      {/* Верхний левый */}
-      <div style={{ position: "fixed", top: 0, left: 0, width: "clamp(180px, 35vw, 340px)", height: "clamp(180px, 35vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={INVITE_BG} alt="" style={{ position: "absolute", top: 0, left: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "top left", opacity: 0.75, mixBlendMode: "multiply" }} />
+      {/* ===== ФОНОВЫЕ ДЕКОРАЦИИ ===== */}
+      {/* Эвкалипт — левый бок */}
+      <div style={{ position: "fixed", top: "10%", left: 0, width: "clamp(140px, 28vw, 280px)", height: "80vh", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={IMG_EUCALYPTUS} alt="" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "left center", opacity: 0.55, mixBlendMode: "multiply" }} />
       </div>
-      {/* Верхний правый */}
-      <div style={{ position: "fixed", top: 0, right: 0, width: "clamp(180px, 35vw, 340px)", height: "clamp(180px, 35vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={INVITE_BG} alt="" style={{ position: "absolute", top: 0, right: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "top right", opacity: 0.75, mixBlendMode: "multiply", transform: "scaleX(-1)" }} />
+      {/* Белые цветы с листьями — верхний правый */}
+      <div style={{ position: "fixed", top: 0, right: 0, width: "clamp(180px, 38vw, 360px)", height: "clamp(220px, 45vw, 420px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={IMG_WHITE_FLOWERS} alt="" style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right", opacity: 0.6, mixBlendMode: "multiply" }} />
       </div>
-      {/* Нижний левый */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, width: "clamp(160px, 30vw, 300px)", height: "clamp(160px, 30vw, 300px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={INVITE_BG} alt="" style={{ position: "absolute", bottom: 0, left: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "bottom left", opacity: 0.7, mixBlendMode: "multiply", transform: "scaleY(-1)", transformOrigin: "bottom" }} />
+      {/* Мрамор с цветами — нижний левый */}
+      <div style={{ position: "fixed", bottom: 0, left: 0, width: "clamp(160px, 32vw, 320px)", height: "clamp(200px, 40vw, 380px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={IMG_MARBLE} alt="" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom left", opacity: 0.55, mixBlendMode: "multiply" }} />
       </div>
-      {/* Нижний правый */}
-      <div style={{ position: "fixed", bottom: 0, right: 0, width: "clamp(160px, 30vw, 300px)", height: "clamp(160px, 30vw, 300px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
-        <img src={INVITE_BG} alt="" style={{ position: "absolute", bottom: 0, right: 0, width: "200%", height: "200%", objectFit: "cover", objectPosition: "bottom right", opacity: 0.7, mixBlendMode: "multiply", transform: "scale(-1, -1)", transformOrigin: "bottom right" }} />
+      {/* Мятные цветы — нижний правый */}
+      <div style={{ position: "fixed", bottom: 0, right: 0, width: "clamp(160px, 34vw, 320px)", height: "clamp(180px, 36vw, 340px)", pointerEvents: "none", zIndex: 10, overflow: "hidden" }}>
+        <img src={IMG_MINT_FLOWERS} alt="" style={{ position: "absolute", bottom: 0, right: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom right", opacity: 0.5, mixBlendMode: "multiply" }} />
       </div>
 
       <div className="leaves-bg" style={{ position: "relative", zIndex: 20 }}>
@@ -218,13 +222,34 @@ export default function Index() {
 
         {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
         <section style={{ padding: "0 0 0" }}>
-          {/* Фото пары */}
-          <div style={{ padding: "0 32px 0", display: "flex", justifyContent: "center" }}>
-            <div className="couple-photo-wrap anim-photo" style={{ maxWidth: 460 }}>
+          {/* Фото пары с геометрической рамкой */}
+          <div style={{ padding: "24px 32px 0", display: "flex", justifyContent: "center" }}>
+            <div className="anim-photo" style={{ position: "relative", maxWidth: 460, width: "100%" }}>
+              {/* Геометрическая рамка поверх фото */}
+              <img
+                src={IMG_GEOM}
+                alt=""
+                style={{
+                  position: "absolute", inset: "-12%",
+                  width: "124%", height: "124%",
+                  objectFit: "contain",
+                  pointerEvents: "none", zIndex: 3,
+                  mixBlendMode: "multiply",
+                  opacity: 0.9,
+                }}
+              />
               <img
                 src={COUPLE_PHOTO}
                 alt="Александр и Ангелина"
-                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "3/4",
+                  objectFit: "cover",
+                  position: "relative",
+                  zIndex: 2,
+                  borderRadius: 2,
+                }}
               />
             </div>
           </div>
