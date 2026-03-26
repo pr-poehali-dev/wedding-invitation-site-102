@@ -221,33 +221,10 @@ export default function Index() {
 
       <div className="leaves-bg" style={{ position: "relative", zIndex: 20 }}>
 
-        {/* ===== ФОТО ЖЕНИХА И НЕВЕСТЫ ===== */}
-        <section style={{ padding: "48px 24px 32px" }}>
-          <p className="anim-w1 font-sans-w" style={{ textAlign: "center", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.7, marginBottom: 32 }}>
-            ✦ &nbsp; Свадебное приглашение &nbsp; ✦
-          </p>
-          <div className="anim-photo" style={{ display: "flex", gap: 16, justifyContent: "center", maxWidth: 600, margin: "0 auto" }}>
-            <div className="couple-photo-wrap" style={{ flex: 1, maxWidth: 280 }}>
-              <img
-                src={BRIDE_PHOTO}
-                alt="Ангелина"
-                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
-            <div className="couple-photo-wrap" style={{ flex: 1, maxWidth: 280 }}>
-              <img
-                src={GROOM_PHOTO}
-                alt="Александр"
-                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
-          </div>
-        </section>
-
         {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
-        <section style={{ padding: "0 0 0" }}>
+        <section style={{ padding: "48px 0 0" }}>
           {/* Фото пары */}
-          <div style={{ padding: "24px 32px 0", display: "flex", justifyContent: "center" }}>
+          <div style={{ padding: "0 32px 0", display: "flex", justifyContent: "center" }}>
             <div className="couple-photo-wrap anim-photo" style={{ maxWidth: 460 }}>
               <img
                 src={COUPLE_PHOTO}
