@@ -223,6 +223,9 @@ export default function Index() {
 
         {/* ===== ФОТО + ПРИВЕТСТВИЕ ===== */}
         <section style={{ padding: "48px 0 0" }}>
+          <p className="anim-w1 font-sans-w" style={{ textAlign: "center", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "#2d5a2d", opacity: 0.7, marginBottom: 32 }}>
+            ✦ &nbsp; Свадебное приглашение &nbsp; ✦
+          </p>
           {/* Фото пары */}
           <div style={{ padding: "0 32px 0", display: "flex", justifyContent: "center" }}>
             <div className="couple-photo-wrap anim-photo" style={{ maxWidth: 460 }}>
