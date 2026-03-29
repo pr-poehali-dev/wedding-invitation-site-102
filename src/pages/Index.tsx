@@ -16,12 +16,18 @@ export default function Index() {
     attending: "",
     parts: "",
     alcohol: "",
+    transport: "",
     wishes: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await fetch("https://functions.poehali.dev/115d53d7-5c8d-4e03-a6c0-b3373f530aff", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    }).catch(() => {});
     setSubmitted(true);
   };
 
@@ -474,6 +480,31 @@ export default function Index() {
                           value={opt.value}
                           checked={form.alcohol === opt.value}
                           onChange={(e) => setForm({ ...form, alcohol: e.target.value })}
+                        />
+                        {opt.label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 28 }}>
+                  <label className="font-sans-w" style={{ display: "block", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2d5a2d", marginBottom: 14 }}>
+                    Способ прибытия на торжество
+                  </label>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {[
+                      { value: "own_car", label: "На своем автомобиле" },
+                      { value: "own_car_help", label: "На своем автомобиле и готов(а) помочь с трансфером другим гостям" },
+                      { value: "self", label: "Своим ходом (такси, общественный транспорт)" },
+                      { value: "unknown", label: "Пока не знаю, сообщу о своем решении позже" },
+                    ].map((opt) => (
+                      <label key={opt.value} className="w-radio-label">
+                        <input
+                          type="radio"
+                          name="transport"
+                          value={opt.value}
+                          checked={form.transport === opt.value}
+                          onChange={(e) => setForm({ ...form, transport: e.target.value })}
                         />
                         {opt.label}
                       </label>
