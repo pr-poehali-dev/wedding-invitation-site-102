@@ -3,6 +3,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import psycopg2
 
 TO_EMAILS = ["kovalev.alex2002@yandex.ru", "Angellu1407@mail.ru"]
 
@@ -31,9 +32,45 @@ ALCOHOL_LABELS = {
     "none": "Не употребляю алкоголь",
 }
 
+CREATE_TABLE_SQL = """
+CREATE TABLE IF NOT EXISTS rsvp_responses (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    phone TEXT,
+    attending TEXT,
+    parts TEXT,
+    alcohol TEXT,
+    transport TEXT,
+    wishes TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+"""
+
+
+def save_to_db(data: dict):
+    conn = psycopg2.connect(os.environ["DATABASE_URL"])
+    cur = conn.cursor()
+    cur.execute(CREATE_TABLE_SQL)
+    cur.execute(
+        """INSERT INTO rsvp_responses (name, phone, attending, parts, alcohol, transport, wishes)
+           VALUES (%s, %s, %s, %s, %s, %s, %s)""",
+        (
+            data.get("name"),
+            data.get("phone"),
+            data.get("attending"),
+            data.get("parts"),
+            data.get("alcohol"),
+            data.get("transport"),
+            data.get("wishes"),
+        ),
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
+
 
 def handler(event: dict, context) -> dict:
-    """Принимает ответ гостя из свадебной анкеты и отправляет уведомление на почту жениха и невесты."""
+    """Принимает ответ гостя из свадебной анкеты, сохраняет в БД и отправляет уведомление на почту жениха и невесты."""
     headers = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -44,6 +81,8 @@ def handler(event: dict, context) -> dict:
         return {"statusCode": 200, "headers": headers, "body": ""}
 
     data = json.loads(event.get("body") or "{}")
+
+    save_to_db(data)
 
     name = data.get("name", "—")
     phone = data.get("phone", "—")
