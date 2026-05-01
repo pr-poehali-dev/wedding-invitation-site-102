@@ -32,27 +32,26 @@ ALCOHOL_LABELS = {
     "none": "Не употребляю алкоголь",
 }
 
-CREATE_TABLE_SQL = """
-CREATE TABLE IF NOT EXISTS rsvp_responses (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    phone TEXT,
-    attending TEXT,
-    parts TEXT,
-    alcohol TEXT,
-    transport TEXT,
-    wishes TEXT,
-    created_at TIMESTAMP DEFAULT NOW()
-);
-"""
-
 
 def save_to_db(data: dict):
+    schema = os.environ.get("MAIN_DB_SCHEMA", "public")
     conn = psycopg2.connect(os.environ["DATABASE_URL"])
     cur = conn.cursor()
-    cur.execute(CREATE_TABLE_SQL)
+    cur.execute(f"""
+        CREATE TABLE IF NOT EXISTS {schema}.rsvp_responses (
+            id SERIAL PRIMARY KEY,
+            name TEXT,
+            phone TEXT,
+            attending TEXT,
+            parts TEXT,
+            alcohol TEXT,
+            transport TEXT,
+            wishes TEXT,
+            created_at TIMESTAMP DEFAULT NOW()
+        )
+    """)
     cur.execute(
-        """INSERT INTO rsvp_responses (name, phone, attending, parts, alcohol, transport, wishes)
+        f"""INSERT INTO {schema}.rsvp_responses (name, phone, attending, parts, alcohol, transport, wishes)
            VALUES (%s, %s, %s, %s, %s, %s, %s)""",
         (
             data.get("name"),
