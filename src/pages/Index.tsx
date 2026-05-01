@@ -373,7 +373,7 @@ export default function Index() {
               </h2>
               <div style={{ width: 48, height: 1, background: "#2d5a2d", opacity: 0.3, margin: "0 auto 20px" }} />
               <p className="font-sans-w" style={{ fontSize: 14, color: "#4a6a4a", lineHeight: 1.8 }}>
-                Пожалуйста, ответьте до <strong>01.05.2026</strong>, чтобы мы могли лучше подготовиться.
+                Пожалуйста, ответьте до <strong>20.05.2026</strong>, чтобы мы могли лучше подготовиться.
               </p>
             </div>
 
